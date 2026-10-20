@@ -1,0 +1,70 @@
+{
+  "manifest_version": 3,
+  "name": "WebNovel Ultimate Chapter Copier",
+  "version": "2.0.0",
+  "description": "Copy full WebNovel chapters with Rust/WASM text processing; auto-copy next chapter.",
+  "minimum_chrome_version": "109",
+  "permissions": [
+    "storage",
+    "offscreen",
+    "clipboardWrite",
+    "scripting"
+  ],
+  "host_permissions": [
+    "*://*.webnovel.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.webnovel.com/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_title": "WebNovel Chapter Copier",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "commands": {
+    "copy-chapter": {
+      "suggested_key": {
+        "default": "Alt+Shift+C"
+      },
+      "description": "Copy the entire chapter"
+    },
+    "select-chapter": {
+      "suggested_key": {
+        "default": "Alt+Shift+A"
+      },
+      "description": "Select the chapter text on the page"
+    },
+    "retry-chapter": {
+      "suggested_key": {
+        "default": "Alt+Shift+R"
+      },
+      "description": "Retry chapter extraction"
+    }
+  },
+  "optional_host_permissions": [
+    "*://*/*"
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self'"
+  }
+}

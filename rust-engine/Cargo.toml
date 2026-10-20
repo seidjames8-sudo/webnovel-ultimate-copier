@@ -1,0 +1,18 @@
+[package]
+name = "text_engine"
+version = "2.0.0"
+edition = "2021"
+description = "Text normalization and statistics engine for WebNovel Ultimate Chapter Copier"
+license = "MIT"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+# Pinned to a matched pair. wasm-pack downloads a wasm-bindgen CLI of the same version.
+wasm-bindgen = "=0.2.92"
+js-sys = "=0.3.69"
+
+[profile.release]
+opt-level = "s"
+lto = true

@@ -1,0 +1,13 @@
+{
+  "name": "webnovel-ultimate-copier",
+  "version": "2.0.0",
+  "private": true,
+  "description": "WebNovel Ultimate Chapter Copier: Chrome/Edge extension with a Rust/WASM text engine",
+  "scripts": {
+    "build:wasm": "node build-wasm.mjs",
+    "test:js": "node --test tests/*.test.mjs",
+    "test:rust": "cd rust-engine && cargo test",
+    "test": "npm run test:js && npm run test:rust"
+  },
+  "license": "MIT"
+}
